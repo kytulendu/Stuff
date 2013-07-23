@@ -1,5 +1,5 @@
-Here is Kytulendu Rrit's  Skyrim Dragon font for use with Turbo C/C++,
-Borland C++, Turbo Pascal, Borland Pascal, what ever that support
+Here is Kytulendu Rrit's Skyrim Dragon font for use with Turbo C/C++,
+Borland C++, Turbo Pascal, Borland Pascal or what ever that support
 Borland BGI font
 
 The original font is from http://elderscrolls.wikia.com/wiki/Dragon_Alphabet
@@ -28,3 +28,5 @@ Note: You cannot type number using this font
 While the "0" (zero) key also has a character mapped to it,
 it is one that is not used and was discarded from the final version of the the game
 and can be ignored.
+
+The Elder Scrolls V : Skyrim is Copyright by Bethesda Softworks.
