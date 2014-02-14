@@ -1,0 +1,4 @@
+DEL *.ERR
+DEL *.EXE
+DEL *.OBJ
+DEL *.LIB
