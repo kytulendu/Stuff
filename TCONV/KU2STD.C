@@ -46,7 +46,7 @@ int main( int argc, char *argv[] ) {
 
 	FILE *inFile, *outFile;
 
-	char character;
+	unsigned char character;
 
 	if ( argc != 3 ) {
 		usage( );
