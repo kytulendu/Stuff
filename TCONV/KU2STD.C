@@ -8,7 +8,7 @@ Copyright 2014, Khral Steelforge.
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Thai character code convertion table */
+/* Thai character code conversion table */
 unsigned char ku_to_std[] = {
 	0x098, 0x099, 0x09a, 0x09b, 0x096, 0x095, 0x093, 0x092,
 	0x090, 0x091, 0x08f, 0x020, 0x020, 0x020, 0x020, 0x020,
