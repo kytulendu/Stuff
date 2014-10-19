@@ -1,3 +1,4 @@
 Khral's programing stuff
 ========================
-feel free to use this stuff and if you use this please credit me and/or the author of original project.
+Feel free to use this stuff in any project and if you use it,
+please credit me or the author of original project.
