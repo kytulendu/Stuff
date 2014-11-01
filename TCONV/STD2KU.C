@@ -33,7 +33,7 @@ void usage( void ) {
 	puts( "Thai TIS-620 to KU converter" );
 	puts( "Copyright 2014, Khral Steelforge.\n" );
 	puts( "BACKUP BEFORE CONVERT!\n" );
-	puts( "usage: STD2KU [input file] [ourput file]");
+	puts( "usage: STD2KU [input file] [output file]");
 }
 
 int main( int argc, char *argv[] ) {
