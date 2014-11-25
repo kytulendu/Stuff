@@ -1,6 +1,6 @@
 /*
 * ============================================================================
-* Thai character code converter test.
+* Convert iRC Standard Word table to CU-Writer table, TIS-620 only.
 * Copyright (c) 2014, Khral Steelforge.
 *
 * Permission is hereby granted, free of charge, to any person obtaining a
@@ -27,33 +27,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "cwku2std.h"
-#include "std2cwku.h"
-
-#include "rwku2std.h"
-#include "std2rwku.h"
-
-int main( ) {
-	int i;
-	for ( i = 0; i < 256; i++ ) {
-		if ( cwku2std( std2cwku( i ) ) != i ) {
-			printf( "In std2ku, wrong code = %X\n", i );
-		}
+/** Convert iRC Standard Word table to CU-Writer table, TIS-620 only.
+*  \param[in]  p_stdcode		STDW table code.
+*  \return unsigned char		CW table code. */
+unsigned char stw2cwtab( unsigned char p_stdcode ) {
+	switch ( p_stdcode ) {
+	case 0x087:
+		return ( 0x098 );
+		break;
+	case 0x088:
+		return ( 0x09b );
+		break;
+	case 0x08b:
+		return ( 0x099 );
+		break;
+	case 0x08c:
+		return ( 0x09a );
+		break;
+	case 0x08e:
+		return ( 0x096 );
+		break;
+	case 0x08f:
+		return ( 0x095 );
+		break;
+	default:
+		return ( p_stdcode );
 	}
-	for ( i = 0; i < 256; i++ ) {
-		if ( std2cwku( cwku2std( i ) ) != i ) {
-			printf( "In ku2std, wrong code = %X\n", i );
-		}
-	}
-	for ( i = 0; i < 256; i++ ) {
-		if ( rwku2std( std2rwku( i ) ) != i ) {
-			printf( "In std2rwku, wrong code = %X\n", i );
-		}
-	}
-	for ( i = 0; i < 256; i++ ) {
-		if ( std2rwku( rwku2std( i ) ) != i ) {
-			printf( "In rwku2std, wrong code = %X\n", i );
-		}
-	}
-	return 0;
 }

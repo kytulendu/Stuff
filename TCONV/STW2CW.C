@@ -1,6 +1,6 @@
 /*
-* =============================================================================
-* Convert TIS-620 to KU Thai character code.
+* ============================================================================
+* Convert iRC Standard Word table to CU-Writer table, TIS-620 only.
 * Copyright (c) 2014, Khral Steelforge.
 *
 * Permission is hereby granted, free of charge, to any person obtaining a
@@ -21,19 +21,19 @@
 * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 * DEALINGS IN THE SOFTWARE.
 *
-*==============================================================================
+* ============================================================================
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "std2ku.h"
+#include "stw2cw.h"
 
 void usage( void ) {
-	puts( "Thai TIS-620 to KU converter" );
+	puts( "Convert iRC Standard Word table to CU-Writer table, TIS-620 only." );
 	puts( "Copyright 2014, Khral Steelforge.\n" );
 	puts( "BACKUP BEFORE CONVERT!\n" );
-	puts( "usage: STD2KU [input file] [output file]");
+	puts( "usage: STW2CW [input file] [output file]");
 }
 
 int main( int argc, char *argv[] ) {
@@ -61,7 +61,7 @@ int main( int argc, char *argv[] ) {
 		if ( feof( inFile ) ) {
 			break;
 		}
-		fprintf( outFile, "%c", std2ku( character ) );
+		fprintf( outFile, "%c", stw2cwtab( character ) );
 	} while ( 1 );
 
 	puts( "Finished!" );

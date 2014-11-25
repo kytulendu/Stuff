@@ -1,6 +1,6 @@
 /*
-* =============================================================================
-* Convert KU to TIS-620 Thai character code.
+* ============================================================================
+* Convert CU-Writer KU to TIS-620 Thai character code.
 * Copyright (c) 2014, Khral Steelforge.
 *
 * Permission is hereby granted, free of charge, to any person obtaining a
@@ -21,11 +21,11 @@
 * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 * DEALINGS IN THE SOFTWARE.
 *
-*==============================================================================
+* ============================================================================
 */
 
 /* Thai character code conversion table */
-unsigned char ku_to_std[] = {
+unsigned char cwku_to_std[] = {
 	0x098, 0x099, 0x09a, 0x09b, 0x096, 0x095, 0x093, 0x092,
 	0x090, 0x091, 0x08f, 0x020, 0x020, 0x020, 0x020, 0x020,
 	0x0f0, 0x0f1, 0x0f2, 0x0f3, 0x0f4, 0x0f5, 0x0f6, 0x0f7,
@@ -44,9 +44,9 @@ unsigned char ku_to_std[] = {
 	0x020, 0x020, 0x0ee, 0x0ef, 0x0fa, 0x0fb, 0x0fe, 0x0ff,
 };
 
-/** Change KU code character to TIS-620 code character.
-*  \param[in]  p_stdcode		KU code character.
+/** Convert CU-Writer KU to TIS-620 Thai character code.
+*  \param[in]  p_kucode			CU-Writer KU code character.
 *  \return unsigned char		TIS-620 code character. */
-unsigned char ku2std( unsigned char p_kucode ) {
-	return ( ( p_kucode >= 0x80 ) ? ku_to_std[p_kucode - 0x80] : p_kucode );
+unsigned char cwku2std( unsigned char p_kucode ) {
+	return ( ( p_kucode >= 0x80 ) ? cwku_to_std[p_kucode - 0x80] : p_kucode );
 }

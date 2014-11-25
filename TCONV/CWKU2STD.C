@@ -1,6 +1,6 @@
 /*
 * ============================================================================
-* Thai character code converter test.
+* Convert CU-Writer KU to TIS-620 Thai character code.
 * Copyright (c) 2014, Khral Steelforge.
 *
 * Permission is hereby granted, free of charge, to any person obtaining a
@@ -28,32 +28,45 @@
 #include <stdlib.h>
 
 #include "cwku2std.h"
-#include "std2cwku.h"
 
-#include "rwku2std.h"
-#include "std2rwku.h"
+void usage( void ) {
+	puts( "Convert CU-Writer KU to TIS-620 Thai character code." );
+	puts( "Copyright 2014, Khral Steelforge.\n" );
+	puts( "BACKUP BEFORE CONVERT!\n" );
+	puts( "usage: KU2STD [input file] [output file]");
+}
 
-int main( ) {
-	int i;
-	for ( i = 0; i < 256; i++ ) {
-		if ( cwku2std( std2cwku( i ) ) != i ) {
-			printf( "In std2ku, wrong code = %X\n", i );
-		}
+int main( int argc, char *argv[] ) {
+
+	FILE *inFile, *outFile;
+
+	unsigned char character;
+
+	if ( argc != 3 ) {
+		usage( );
+		exit( 0 );
 	}
-	for ( i = 0; i < 256; i++ ) {
-		if ( std2cwku( cwku2std( i ) ) != i ) {
-			printf( "In ku2std, wrong code = %X\n", i );
-		}
+
+	if ( ( inFile = fopen( argv[1], "r" ) ) == NULL ) {
+		puts( "Can't open input file." );
+		exit( 0 );
 	}
-	for ( i = 0; i < 256; i++ ) {
-		if ( rwku2std( std2rwku( i ) ) != i ) {
-			printf( "In std2rwku, wrong code = %X\n", i );
-		}
+	if ( ( outFile = fopen( argv[2], "w" ) ) == NULL ) {
+		puts( "Can't open output file." );
+		exit( 0 );
 	}
-	for ( i = 0; i < 256; i++ ) {
-		if ( std2rwku( rwku2std( i ) ) != i ) {
-			printf( "In rwku2std, wrong code = %X\n", i );
+
+	do {
+		character = fgetc( inFile );
+		if ( feof( inFile ) ) {
+			break;
 		}
-	}
+		fprintf( outFile, "%c", cwku2std( character ) );
+	} while ( 1 );
+
+	puts( "Finished!" );
+
+	fclose( inFile );
+	fclose( outFile );
 	return 0;
 }

@@ -1,6 +1,6 @@
 /*
-* =============================================================================
-* Convert KU to TIS-620 Thai character code.
+* ============================================================================
+* Convert TIS-620 to CU-Writer KU Thai character code.
 * Copyright (c) 2014, Khral Steelforge.
 *
 * Permission is hereby granted, free of charge, to any person obtaining a
@@ -21,19 +21,19 @@
 * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 * DEALINGS IN THE SOFTWARE.
 *
-*==============================================================================
+* ============================================================================
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "ku2std.h"
+#include "std2cwku.h"
 
 void usage( void ) {
-	puts( "Thai KU to TIS-620 converter" );
+	puts( "Convert TIS-620 to CU-Writer KU Thai character code." );
 	puts( "Copyright 2014, Khral Steelforge.\n" );
 	puts( "BACKUP BEFORE CONVERT!\n" );
-	puts( "usage: KU2STD [input file] [output file]");
+	puts( "usage: STD2KU [input file] [output file]");
 }
 
 int main( int argc, char *argv[] ) {
@@ -61,7 +61,7 @@ int main( int argc, char *argv[] ) {
 		if ( feof( inFile ) ) {
 			break;
 		}
-		fprintf( outFile, "%c", ku2std( character ) );
+		fprintf( outFile, "%c", std2cwku( character ) );
 	} while ( 1 );
 
 	puts( "Finished!" );
