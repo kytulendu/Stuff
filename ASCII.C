@@ -1,7 +1,7 @@
 /*
 * ============================================================================
 * Display ASCII Table.
-* By Khral Steelforge.
+* By Khral Steelforge <https://github.com/kytulendu>.
 *
 * This is free and unencumbered software released into the public domain.
 *

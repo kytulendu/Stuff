@@ -1,7 +1,7 @@
 /*
 * ============================================================================
 * Convert iRC Standard Word table to CU-Writer table, TIS-620 only.
-* By Khral Steelforge.
+* By Khral Steelforge <https://github.com/kytulendu>.
 *
 * This is free and unencumbered software released into the public domain.
 *
