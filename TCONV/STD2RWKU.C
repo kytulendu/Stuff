@@ -1,7 +1,7 @@
 /*
 * ============================================================================
 * Convert TIS-620 to Rajavithi Word PC KU Thai character code.
-* By Khral Steelforge <https://github.com/kytulendu>.
+* By Khralkatorrix <https://github.com/kytulendu>.
 *
 * This is free and unencumbered software released into the public domain.
 *
@@ -38,7 +38,7 @@
 
 void usage( void ) {
 	puts( "Convert TIS-620 to Rajavithi Word PC KU Thai character code." );
-	puts( "Copyright 2014, Khral Steelforge.\n" );
+	puts( "Copyright 2014, Khralkatorrix.\n" );
 	puts( "BACKUP BEFORE CONVERT!\n" );
 	puts( "usage: STD2RWKU [input file] [output file]");
 }

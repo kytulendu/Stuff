@@ -1,7 +1,7 @@
 /*
 * ============================================================================
 * Convert CU-Writer KU to TIS-620 Thai character code.
-* By Khral Steelforge <https://github.com/kytulendu>.
+* By Khralkatorrix <https://github.com/kytulendu>.
 *
 * This is free and unencumbered software released into the public domain.
 *
@@ -38,7 +38,7 @@
 
 void usage( void ) {
 	puts( "Convert CU-Writer KU to TIS-620 Thai character code." );
-	puts( "Copyright 2014, Khral Steelforge.\n" );
+	puts( "Copyright 2014, Khralkatorrix.\n" );
 	puts( "BACKUP BEFORE CONVERT!\n" );
 	puts( "usage: KU2STD [input file] [output file]");
 }

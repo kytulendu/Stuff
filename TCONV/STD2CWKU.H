@@ -1,7 +1,7 @@
 /*
 * ============================================================================
 * Convert TIS-620 to CU-Writer KU Thai character code.
-* By Khral Steelforge <https://github.com/kytulendu>.
+* By Khralkatorrix <https://github.com/kytulendu>.
 *
 * This is free and unencumbered software released into the public domain.
 *

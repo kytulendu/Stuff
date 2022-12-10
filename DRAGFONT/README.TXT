@@ -1,4 +1,4 @@
-Here is Kytulendu Rrit's Skyrim Dragon font for use with Turbo C/C++,
+Here is Khralkatorrix's Skyrim Dragon font for use with Turbo C/C++,
 Borland C++, Turbo Pascal, Borland Pascal or what ever that support
 Borland BGI font
 

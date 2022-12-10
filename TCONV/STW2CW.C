@@ -1,7 +1,7 @@
 /*
 * ============================================================================
 * Convert iRC Standard Word table to CU-Writer table, TIS-620 only.
-* By Khral Steelforge <https://github.com/kytulendu>.
+* By Khralkatorrix <https://github.com/kytulendu>.
 *
 * This is free and unencumbered software released into the public domain.
 *
@@ -38,7 +38,7 @@
 
 void usage( void ) {
 	puts( "Convert iRC Standard Word table to CU-Writer table, TIS-620 only." );
-	puts( "Copyright 2014, Khral Steelforge.\n" );
+	puts( "Copyright 2014, Khralkatorrix.\n" );
 	puts( "BACKUP BEFORE CONVERT!\n" );
 	puts( "usage: STW2CW [input file] [output file]");
 }

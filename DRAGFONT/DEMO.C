@@ -1,4 +1,4 @@
-/* Skyrim Dragon font demo by Kytulendu Rrit */
+/* Skyrim Dragon font demo by Khralkatorrix */
 
 #include <graphics.h>
 #include <conio.h>
