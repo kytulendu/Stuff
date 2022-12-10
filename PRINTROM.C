@@ -36,7 +36,8 @@
 /* https://stackoverflow.com/questions/7863499/conversion-of-char-to-binary-in-c */
 void printbincharpad(char c)
 {
-    for(int i = 7; i >= 0; --i)
+    int i;
+    for(i = 7; i >= 0; --i)
     {
         putchar((c & (1 << i)) ? '#' : '.');
     }
