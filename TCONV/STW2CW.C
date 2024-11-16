@@ -36,44 +36,50 @@
 
 #include "stw2cw.h"
 
-void usage( void ) {
-	puts( "Convert iRC Standard Word table to CU-Writer table, TIS-620 only." );
-	puts( "Copyright 2014, Khralkatorrix.\n" );
-	puts( "BACKUP BEFORE CONVERT!\n" );
-	puts( "usage: STW2CW [input file] [output file]");
+void usage( void )
+{
+    puts( "Convert iRC Standard Word table to CU-Writer table, TIS-620 only." );
+    puts( "Copyright 2014, Khralkatorrix.\n" );
+    puts( "BACKUP BEFORE CONVERT!\n" );
+    puts( "usage: STW2CW [input file] [output file]");
 }
 
-int main( int argc, char *argv[] ) {
+int main( int argc, char *argv[] )
+{
 
-	FILE *inFile, *outFile;
+    FILE *inFile, *outFile;
 
-	unsigned char character;
+    unsigned char character;
 
-	if ( argc != 3 ) {
-		usage( );
-		exit( 0 );
-	}
+    if ( argc != 3 )
+    {
+        usage( );
+        exit( 0 );
+    }
 
-	if ( ( inFile = fopen( argv[1], "r" ) ) == NULL ) {
-		puts( "Can't open input file." );
-		exit( 0 );
-	}
-	if ( ( outFile = fopen( argv[2], "w" ) ) == NULL ) {
-		puts( "Can't open output file." );
-		exit( 0 );
-	}
+    if ( ( inFile = fopen( argv[1], "r" ) ) == NULL )
+    {
+        puts( "Can't open input file." );
+        exit( 0 );
+    }
+    if ( ( outFile = fopen( argv[2], "w" ) ) == NULL )
+    {
+        puts( "Can't open output file." );
+        exit( 0 );
+    }
 
-	do {
-		character = fgetc( inFile );
-		if ( feof( inFile ) ) {
-			break;
-		}
-		fprintf( outFile, "%c", stw2cwtab( character ) );
-	} while ( 1 );
+    do {
+        character = fgetc( inFile );
+        if ( feof( inFile ) )
+        {
+            break;
+        }
+        fprintf( outFile, "%c", stw2cwtab( character ) );
+    } while ( 1 );
 
-	puts( "Finished!" );
+    puts( "Finished!" );
 
-	fclose( inFile );
-	fclose( outFile );
-	return 0;
+    fclose( inFile );
+    fclose( outFile );
+    return 0;
 }

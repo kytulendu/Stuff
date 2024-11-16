@@ -4,33 +4,33 @@
 #if !defined(__COLORS)
 #define __COLORS
 enum COLORS {
-	BLACK,                              /* dark colors */
-	BLUE,
-	GREEN,
-	CYAN,
-	RED,
-	MAGENTA,
-	BROWN,
-	LIGHTGRAY,
-	DARKGRAY,                           /* light colors */
-	LIGHTBLUE,
-	LIGHTGREEN,
-	LIGHTCYAN,
-	LIGHTRED,
-	LIGHTMAGENTA,
-	YELLOW,
-	WHITE
+    BLACK,                              /* dark colors */
+    BLUE,
+    GREEN,
+    CYAN,
+    RED,
+    MAGENTA,
+    BROWN,
+    LIGHTGRAY,
+    DARKGRAY,                           /* light colors */
+    LIGHTBLUE,
+    LIGHTGREEN,
+    LIGHTCYAN,
+    LIGHTRED,
+    LIGHTMAGENTA,
+    YELLOW,
+    WHITE
 };
 
 #endif
 
 #if !defined(__GRAPHICS_H)
 enum putimage_ops { /* BitBlt operators for putimage */
-	COPY_PUT,       /* MOV */
-	XOR_PUT,        /* XOR */
-	OR_PUT,         /* OR  */
-	AND_PUT,        /* AND */
-	NOT_PUT         /* NOT */
+    COPY_PUT,       /* MOV */
+    XOR_PUT,        /* XOR */
+    OR_PUT,         /* OR  */
+    AND_PUT,        /* AND */
+    NOT_PUT         /* NOT */
 };
 #endif
 
@@ -44,10 +44,10 @@ enum putimage_ops { /* BitBlt operators for putimage */
 
 #define _iswap(a, b) \
 {                    \
-	int i;           \
-	i = *a;          \
-	*a = *b;         \
-	*b = i;          \
+    int i;           \
+    i = *a;          \
+    *a = *b;         \
+    *b = i;          \
 }
 
 void Set_Mode( int mode );

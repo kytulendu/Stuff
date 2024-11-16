@@ -3,20 +3,23 @@
 #include <graphics.h>
 #include <conio.h>
 
-void main() {
+void main()
+{
     int graphdriver = DETECT, graphmode, ErrorCode, DragFont, centertext;
     const char* FontName = "DRAG";
     const char* PATH_TO_BGI = "C:\\TC\\BGI\\";  /* change this to your BGI driver path */
 
     initgraph( &graphdriver, &graphmode, PATH_TO_BGI );
     ErrorCode = graphresult();  /* Read result of initialization */
-    if ( ErrorCode != grOk ) {  /* Error occured during init */
+    if ( ErrorCode != grOk )    /* Error occured during init */
+    {
         printf( " Graphics System Error: %s\n", grapherrormsg( ErrorCode ) );
         exit( 1 );
     }
 
     DragFont = installuserfont( FontName );
-    if ( graphresult() != grOk ) {
+    if ( graphresult() != grOk )
+    {
         printf( "Error installing %s", FontName );
         exit( 1 );
     }

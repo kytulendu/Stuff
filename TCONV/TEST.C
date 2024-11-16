@@ -40,27 +40,36 @@
 #include "rwku2std.h"
 #include "std2rwku.h"
 
-int main( ) {
-	int i;
-	for ( i = 0; i < 256; i++ ) {
-		if ( cwku2std( std2cwku( i ) ) != i ) {
-			printf( "In std2ku, wrong code = %X\n", i );
-		}
-	}
-	for ( i = 0; i < 256; i++ ) {
-		if ( std2cwku( cwku2std( i ) ) != i ) {
-			printf( "In ku2std, wrong code = %X\n", i );
-		}
-	}
-	for ( i = 0; i < 256; i++ ) {
-		if ( rwku2std( std2rwku( i ) ) != i ) {
-			printf( "In std2rwku, wrong code = %X\n", i );
-		}
-	}
-	for ( i = 0; i < 256; i++ ) {
-		if ( std2rwku( rwku2std( i ) ) != i ) {
-			printf( "In rwku2std, wrong code = %X\n", i );
-		}
-	}
-	return 0;
+int main( )
+{
+    int i;
+    for ( i = 0; i < 256; i++ )
+    {
+        if ( cwku2std( std2cwku( i ) ) != i )
+        {
+            printf( "In std2ku, wrong code = %X\n", i );
+        }
+    }
+    for ( i = 0; i < 256; i++ )
+    {
+        if ( std2cwku( cwku2std( i ) ) != i )
+        {
+            printf( "In ku2std, wrong code = %X\n", i );
+        }
+    }
+    for ( i = 0; i < 256; i++ )
+    {
+        if ( rwku2std( std2rwku( i ) ) != i )
+        {
+            printf( "In std2rwku, wrong code = %X\n", i );
+        }
+    }
+    for ( i = 0; i < 256; i++ )
+    {
+        if ( std2rwku( rwku2std( i ) ) != i )
+        {
+            printf( "In rwku2std, wrong code = %X\n", i );
+        }
+    }
+    return 0;
 }

@@ -35,29 +35,30 @@
 #include <stdlib.h>
 
 /** Convert iRC Standard Word table to CU-Writer table, TIS-620 only.
-*  \param[in]  p_stdcode		STDW table code.
-*  \return unsigned char		CW table code. */
-unsigned char stw2cwtab( unsigned char p_stdcode ) {
-	switch ( p_stdcode ) {
-	case 0x087:
-		return ( 0x098 );
-		break;
-	case 0x088:
-		return ( 0x09b );
-		break;
-	case 0x08b:
-		return ( 0x099 );
-		break;
-	case 0x08c:
-		return ( 0x09a );
-		break;
-	case 0x08e:
-		return ( 0x096 );
-		break;
-	case 0x08f:
-		return ( 0x095 );
-		break;
-	default:
-		return ( p_stdcode );
-	}
+*  \param[in]  p_stdcode        STDW table code.
+*  \return unsigned char       CW table code. */
+unsigned char stw2cwtab( unsigned char p_stdcode )
+{
+    switch ( p_stdcode ) {
+    case 0x087:
+        return ( 0x098 );
+        break;
+    case 0x088:
+        return ( 0x09b );
+        break;
+    case 0x08b:
+        return ( 0x099 );
+        break;
+    case 0x08c:
+        return ( 0x09a );
+        break;
+    case 0x08e:
+        return ( 0x096 );
+        break;
+    case 0x08f:
+        return ( 0x095 );
+        break;
+    default:
+        return ( p_stdcode );
+    }
 }

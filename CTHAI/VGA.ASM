@@ -25,7 +25,7 @@ NFN             EQU     20
 ;************************************************************************
 
 N               EQU     [BP+4]          ;Formal parameters on stack
-MAS    	       EQU     [BP+6]
+MAS             EQU     [BP+6]
 
         PUBLIC  _PIXEL_W
 
@@ -116,11 +116,11 @@ x               EQU     [BP+4]
 Y               EQU     [BP+6]
 COLOR           EQU     [BP+8]
 CHR             EQU     [BP+10]
-FN_SEG  	       EQU     [BP+12]
-FN_OFF  	       EQU     [BP+14]
+FN_SEG             EQU     [BP+12]
+FN_OFF             EQU     [BP+14]
 
-N     	       EQU WORD PTR [BP-2]
-NN     	       EQU BYTE PTR [BP-4]
+N              EQU WORD PTR [BP-2]
+NN             EQU BYTE PTR [BP-4]
 
         PUBLIC  _OUT_CH
 
@@ -387,10 +387,10 @@ X1      EQU     [BP+8]
 Y1      EQU     [BP+10]
 Color   EQU     [BP+12]
 
-		PUBLIC  __LINE
+        PUBLIC  __LINE
 
 __LINE   PROC    NEAR
-		PUSH    BP
+        PUSH    BP
         MOV     BP,SP
         SUB     SP,6                    ;Declare three local variables
 
@@ -1051,106 +1051,106 @@ Dst_Address     EQU     WORD PTR [BP-18]
 Block_Dx        EQU     WORD PTR [BP-20]
 Block_Dy        EQU     WORD PTR [BP-22]
 
-	PUBLIC  _BITBLT
+    PUBLIC  _BITBLT
 
 _BITBLT PROC    NEAR
-	PUSH    BP
-	MOV     BP,SP
+    PUSH    BP
+    MOV     BP,SP
 
-	SUB     SP,24                   ;Setup local variables
+    SUB     SP,24                   ;Setup local variables
 
-	PUSH    DS                      ;Presrve segment registers
-	PUSH    ES
-	PUSH    DI
-	PUSH    SI
+    PUSH    DS                      ;Presrve segment registers
+    PUSH    ES
+    PUSH    DI
+    PUSH    SI
 
-	;-------------------------------------------------------------
-	;--- COMPUTE MASKS FOR FIRST AND LAST BYTE WITHIN A RASTER
-	;    ROTATION FACTOR, AND MASKS FOR HI AND LOW BITS AFTER ROTATION
-	;    ENABLE ROTATION AND LOGICAL FUNCTIONS IN GRAPHICS CONTROLLER
-	;-------------------------------------------------------------
+    ;-------------------------------------------------------------
+    ;--- COMPUTE MASKS FOR FIRST AND LAST BYTE WITHIN A RASTER
+    ;    ROTATION FACTOR, AND MASKS FOR HI AND LOW BITS AFTER ROTATION
+    ;    ENABLE ROTATION AND LOGICAL FUNCTIONS IN GRAPHICS CONTROLLER
+    ;-------------------------------------------------------------
 
-	MOV     CX,X_Dst                ; NUMBER OF CLEAR BITS IN FIRST BYTE
-	AND     CX,7
-	MOV     First_Mask,0FFH         ; COMPUTE MASK TO CLEAR LEADING BITS
-	SHR     First_Mask,CL
-	MOV     AX,8
-	SUB     AX,CX
-	MOV     InFirst,AX
+    MOV     CX,X_Dst                ; NUMBER OF CLEAR BITS IN FIRST BYTE
+    AND     CX,7
+    MOV     First_Mask,0FFH         ; COMPUTE MASK TO CLEAR LEADING BITS
+    SHR     First_Mask,CL
+    MOV     AX,8
+    SUB     AX,CX
+    MOV     InFirst,AX
 
-	;MASK TO KEEP BITS IN LAST BYTE (PARTIAL BYTE)
+    ;MASK TO KEEP BITS IN LAST BYTE (PARTIAL BYTE)
 
-	MOV     CX,X_Dst                ; GET ADDRESS OF LAST BIT
-	ADD     CX,BWidth
-	AND     CX,7                    ; POSITION JUST AFTER LAST BIT
-	MOV     Last_Mask,0FFH          ; COMPUTE MASK TO KEEP BITS AFTER
-	SHR     Last_Mask,CL
-	NOT     Last_Mask               ; COMPLEMENT TO KEEP LEADING BITS
+    MOV     CX,X_Dst                ; GET ADDRESS OF LAST BIT
+    ADD     CX,BWidth
+    AND     CX,7                    ; POSITION JUST AFTER LAST BIT
+    MOV     Last_Mask,0FFH          ; COMPUTE MASK TO KEEP BITS AFTER
+    SHR     Last_Mask,CL
+    NOT     Last_Mask               ; COMPLEMENT TO KEEP LEADING BITS
 
-	;BITS FROM SOURCE BYTE MUST BE ALLIGNED WITH BITS IN THE
-	;DESTINATION BYTE.  HERE IS COMPUTED THE ROTATION AND THE
-	;TWO MASKS NEEDED TO ISOLOTATE TWO HALVES OF THE BYTE
+    ;BITS FROM SOURCE BYTE MUST BE ALLIGNED WITH BITS IN THE
+    ;DESTINATION BYTE.  HERE IS COMPUTED THE ROTATION AND THE
+    ;TWO MASKS NEEDED TO ISOLOTATE TWO HALVES OF THE BYTE
 
-	; COMPUTE ROTATION
+    ; COMPUTE ROTATION
 
-	MOV     CX,X_Dst                ; COMPUTE BIT DISTANCE BETWEEN
-	SUB     CX,X_Src                ;... BIT POSITIONS IN FIRST BYTES
-	AND     CX,7                    ; ... OF SOURCE AND DESTINATION BYTES
-					; ... AS (SRC-DST)&7
-	MOV     AX,00FFH                ;Compute masks for non-zero rotation
-	ROR     AX,CL
-	MOV     Lower_Mask,AL           ;Save the masks
-	MOV     Upper_Mask,AH
+    MOV     CX,X_Dst                ; COMPUTE BIT DISTANCE BETWEEN
+    SUB     CX,X_Src                ;... BIT POSITIONS IN FIRST BYTES
+    AND     CX,7                    ; ... OF SOURCE AND DESTINATION BYTES
+                    ; ... AS (SRC-DST)&7
+    MOV     AX,00FFH                ;Compute masks for non-zero rotation
+    ROR     AX,CL
+    MOV     Lower_Mask,AL           ;Save the masks
+    MOV     Upper_Mask,AH
 
-	MOV     DX,GRAPHICS_CTL                 ;Address of GRAPHICS controller
-	MOV     AL,3                    ;Index for DATA ROTATE & FN SELECT
-	OUT     DX,AL                   ;Select DATA ROTATE & FN SELECT REG
-	INC     DX
-	MOV     AL,CL                   ;Fetch rotate count
-	MOV     AH,Fn                   ;Fetch logical function
-	AND     AH,3                    ;Move logical function into
-	SHL     AH,1                    ;bits 3 and 4
-	SHL     AH,1
-	SHL     AH,1
-	OR      AL,AH
-	OUT     DX,AL                   ;Write value into DATA ROTATE... reg
+    MOV     DX,GRAPHICS_CTL                 ;Address of GRAPHICS controller
+    MOV     AL,3                    ;Index for DATA ROTATE & FN SELECT
+    OUT     DX,AL                   ;Select DATA ROTATE & FN SELECT REG
+    INC     DX
+    MOV     AL,CL                   ;Fetch rotate count
+    MOV     AH,Fn                   ;Fetch logical function
+    AND     AH,3                    ;Move logical function into
+    SHL     AH,1                    ;bits 3 and 4
+    SHL     AH,1
+    SHL     AH,1
+    OR      AL,AH
+    OUT     DX,AL                   ;Write value into DATA ROTATE... reg
 
-	;-------------------------------------------------------------
-	;--- COMPUTE ABSOLUTE ADDRESS OF SOURCE AND DESTINATION
-	;-------------------------------------------------------------
+    ;-------------------------------------------------------------
+    ;--- COMPUTE ABSOLUTE ADDRESS OF SOURCE AND DESTINATION
+    ;-------------------------------------------------------------
 
-	MOV     WORD PTR Y_Incr,HBYTES  ;Initialize y traversal as normal
+    MOV     WORD PTR Y_Incr,HBYTES  ;Initialize y traversal as normal
 
-	;Because of possible overlap we must adjust direction of traversal
-	;If source block is above the destination then reverse Y traversal
-	;If source block is to the left, then reverse X traversal
+    ;Because of possible overlap we must adjust direction of traversal
+    ;If source block is above the destination then reverse Y traversal
+    ;If source block is to the left, then reverse X traversal
 
-	MOV     AX,Y_Src                ;Compare source and destination Y
-	MOV     BX,Y_Dst
-	CMP     AX,BX
-	JNLE    Compute_Address         ;...Leave alone if src <= dst APICHART
-	ADD     AX,BHeight              ;Begin with last raster in block
-	DEC     AX
-	ADD     BX,BHeight
-	DEC     BX
-	MOV     Y_Src,AX
-	MOV     Y_Dst,BX
-	NEG     WORD PTR Y_Incr         ;And traverse backwards
+    MOV     AX,Y_Src                ;Compare source and destination Y
+    MOV     BX,Y_Dst
+    CMP     AX,BX
+    JNLE    Compute_Address         ;...Leave alone if src <= dst APICHART
+    ADD     AX,BHeight              ;Begin with last raster in block
+    DEC     AX
+    ADD     BX,BHeight
+    DEC     BX
+    MOV     Y_Src,AX
+    MOV     Y_Dst,BX
+    NEG     WORD PTR Y_Incr         ;And traverse backwards
 Compute_Address:
-	MOV     AX,Y_Src                ;Compute offset for source
-	MOV     BX,HBYTES               ;as offset = y * 80 + x/8
-	MUL     BX
-	MOV     SI,X_Src
-	SHR     SI,1
-	SHR     SI,1
-	SHR     SI,1
-	ADD     SI,AX
+    MOV     AX,Y_Src                ;Compute offset for source
+    MOV     BX,HBYTES               ;as offset = y * 80 + x/8
+    MUL     BX
+    MOV     SI,X_Src
+    SHR     SI,1
+    SHR     SI,1
+    SHR     SI,1
+    ADD     SI,AX
         MOV     Src_Address,SI
 
         MOV     AX,Y_Dst                ;Compute offset for destination
         MOV     BX,HBYTES               ;as offset = y * 80 + x/8
         MUL     BX
-	MOV     DI,X_Dst
+    MOV     DI,X_Dst
         SHR     DI,1
         SHR     DI,1
         SHR     DI,1
@@ -1189,13 +1189,13 @@ Plane_Loop:
         INC     DX
         MOV     AL,CL                   ;Fetch plane number
         OUT     DX,AL                   ;Write plane number into register
-	DEC     DX
+    DEC     DX
         MOV     AL,8                    ;Index for BIT MASK register
         OUT     DX,AL                   ;Select BIT MASK register
         INC     DX
 
         ;-------------------------------------------------------------
-	; RASTER LOOP IS DONE IN FOUR STEPS
+    ; RASTER LOOP IS DONE IN FOUR STEPS
         ; (1) MASKS AND ROTATION FACTOR IS COMPUTED TO ALIGN SRC AND DEST
         ; (2) LEADIING PARTIAL BYTE OF DESTINATION IS MODIFIED
         ; (3) FULL BYTES OF DESTINATION ARE MODIFIED
@@ -1240,7 +1240,7 @@ Get_2_Bytes:
         OUT     DX,AL                   ;Write mask into BIT MASK register
         LODSB
         MOV     AH,[DI]                 ;Latch destination bits
-	STOSB                           ;Write first byte
+    STOSB                           ;Write first byte
         MOV     AH,AL                   ;Save AL since it will be trashed by OU
 
 Leading_Done:
@@ -1285,7 +1285,7 @@ Last_Partial:
         MOV     AL,[DI]                 ;Latch destination bits
         MOV     [DI],AH                 ;Write half 2 for src to half 1 of dst
 
-	MOV     AL,Last_Mask            ;Fetch mask for last partial byte
+    MOV     AL,Last_Mask            ;Fetch mask for last partial byte
         AND     AL,Lower_Mask           ;Combine with 'upper mask'
         OUT     DX,AL                   ;Write mask into BIT MASK register
         LODSB                           ;Fetch next source byte
@@ -1330,7 +1330,7 @@ Blit_Done:
         ;enable all four planes for write
         MOV     DX,SEQUENCE_CTL                 ;Address of SEQUENCER
         MOV     AL,2                    ;Index for PLANE ENABLE register
-	OUT     DX,AL                   ;Select register
+    OUT     DX,AL                   ;Select register
         INC     DX
         MOV     AL,0FH                  ;Value to enable all four planes
         OUT     DX,AL                   ;Write value into register

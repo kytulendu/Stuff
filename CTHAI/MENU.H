@@ -6,9 +6,9 @@
 #define M_SEPARATOR -3
 
 typedef struct {
-	char *st;
-	int hotkey;
-	int com;
+    char *st;
+    int hotkey;
+    int com;
 } MenuItem;
 
 extern int max_check_menu, max_disable_menu;

@@ -36,44 +36,50 @@
 
 #include "rwku2std.h"
 
-void usage( void ) {
-	puts( "Convert Rajavithi Word PC KU to TIS-620 Thai character code." );
-	puts( "Copyright 2014, Khralkatorrix.\n" );
-	puts( "BACKUP BEFORE CONVERT!\n" );
-	puts( "usage: RWKU2STD [input file] [output file]");
+void usage( void )
+{
+    puts( "Convert Rajavithi Word PC KU to TIS-620 Thai character code." );
+    puts( "Copyright 2014, Khralkatorrix.\n" );
+    puts( "BACKUP BEFORE CONVERT!\n" );
+    puts( "usage: RWKU2STD [input file] [output file]");
 }
 
-int main( int argc, char *argv[] ) {
+int main( int argc, char *argv[] )
+{
 
-	FILE *inFile, *outFile;
+    FILE *inFile, *outFile;
 
-	unsigned char character;
+    unsigned char character;
 
-	if ( argc != 3 ) {
-		usage( );
-		exit( 0 );
-	}
+    if ( argc != 3 )
+    {
+        usage( );
+        exit( 0 );
+    }
 
-	if ( ( inFile = fopen( argv[1], "r" ) ) == NULL ) {
-		puts( "Can't open input file." );
-		exit( 0 );
-	}
-	if ( ( outFile = fopen( argv[2], "w" ) ) == NULL ) {
-		puts( "Can't open output file." );
-		exit( 0 );
-	}
+    if ( ( inFile = fopen( argv[1], "r" ) ) == NULL )
+    {
+        puts( "Can't open input file." );
+        exit( 0 );
+    }
+    if ( ( outFile = fopen( argv[2], "w" ) ) == NULL )
+    {
+        puts( "Can't open output file." );
+        exit( 0 );
+    }
 
-	do {
-		character = fgetc( inFile );
-		if ( feof( inFile ) ) {
-			break;
-		}
-		fprintf( outFile, "%c", rwku2std( character ) );
-	} while ( 1 );
+    do {
+        character = fgetc( inFile );
+        if ( feof( inFile ) )
+        {
+            break;
+        }
+        fprintf( outFile, "%c", rwku2std( character ) );
+    } while ( 1 );
 
-	puts( "Finished!" );
+    puts( "Finished!" );
 
-	fclose( inFile );
-	fclose( outFile );
-	return 0;
+    fclose( inFile );
+    fclose( outFile );
+    return 0;
 }
