@@ -1,6 +1,6 @@
 /*
 * ============================================================================
-* Convert TIS-620 to CU-Writer KU Thai character code.
+* Convert Kaset-CW (Kaset CU-Writer) to TIS-620 Thai character code.
 * By Khralkatorrix <https://github.com/kytulendu>.
 *
 * This is free and unencumbered software released into the public domain.
@@ -34,14 +34,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "std2cwku.h"
+#include "kucw2std.h"
 
 void usage( void )
 {
-    puts( "Convert TIS-620 to CU-Writer KU Thai character code." );
+    puts( "Convert Kaset-CW (Kaset CU-Writer) to TIS-620 Thai character code." );
     puts( "Copyright 2014, Khralkatorrix.\n" );
     puts( "BACKUP BEFORE CONVERT!\n" );
-    puts( "usage: STD2KU [input file] [output file]");
+    puts( "usage: KUCW2STD [input file] [output file]");
 }
 
 int main( int argc, char *argv[] )
@@ -74,7 +74,7 @@ int main( int argc, char *argv[] )
         {
             break;
         }
-        fprintf( outFile, "%c", std2cwku( character ) );
+        fprintf( outFile, "%c", kucw2std( character ) );
     } while ( 1 );
 
     puts( "Finished!" );

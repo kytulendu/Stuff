@@ -1,6 +1,6 @@
 /*
 * ============================================================================
-* Convert CU-Writer KU to TIS-620 Thai character code.
+* Convert TIS-620 to Kaset-RW (Kaset Rajavithi Word PC) Thai character code.
 * By Khralkatorrix <https://github.com/kytulendu>.
 *
 * This is free and unencumbered software released into the public domain.
@@ -34,52 +34,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "cwku2std.h"
+/* Thai character code conversion table */
+const unsigned char std_to_kurw[] = {
+    0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x094,
+    0x09c, 0x096, 0x09a, 0x098, 0x020, 0x09e, 0x09f, 0x099, 0x095, 0x097, 0x09b, 0x09d, 0x020, 0x020, 0x020, 0x020,
+    0x0a0, 0x0a1, 0x0a2, 0x020, 0x0a3, 0x020, 0x0a4, 0x0a5, 0x0a6, 0x0a7, 0x0a8, 0x0a9, 0x0aa, 0x0ab, 0x0ac, 0x0ad,
+    0x0ae, 0x0af, 0x0b0, 0x0b1, 0x0b2, 0x0b3, 0x0b4, 0x0b5, 0x0b6, 0x0b7, 0x0b8, 0x0b9, 0x0ba, 0x0bb, 0x0bc, 0x0bd,
+    0x0be, 0x0bf, 0x0c0, 0x0c1, 0x0c2, 0x0c3, 0x0cd, 0x0c4, 0x0c5, 0x0c6, 0x0c7, 0x0c8, 0x0c9, 0x0ca, 0x0cb, 0x0d6,
+    0x0cc, 0x0dd, 0x0ce, 0x0cf, 0x0d9, 0x0da, 0x0db, 0x0dc, 0x0d7, 0x0d8, 0x0e5, 0x020, 0x020, 0x020, 0x020, 0x0f7,
+    0x0d0, 0x0d1, 0x0d2, 0x0d3, 0x0d4, 0x020, 0x0d5, 0x0df, 0x0e0, 0x0e1, 0x0e2, 0x0e3, 0x0e4, 0x0de, 0x020, 0x020,
+    0x080, 0x081, 0x082, 0x083, 0x084, 0x085, 0x086, 0x087, 0x088, 0x089, 0x020, 0x020, 0x020, 0x020, 0x020, 0x0ff,
+};
 
-void usage( void )
+/** Convert TIS-620 to Kaset-RW (Kaset Rajavithi Word PC) Thai character code.
+*   for file use by Rajavithi Word PC.
+*  \param[in]  p_stdcode        TIS-620 code character.
+*  \return unsigned char        Kaset-RW code character. */
+unsigned char std2kurw( unsigned char p_stdcode )
 {
-    puts( "Convert CU-Writer KU to TIS-620 Thai character code." );
-    puts( "Copyright 2014, Khralkatorrix.\n" );
-    puts( "BACKUP BEFORE CONVERT!\n" );
-    puts( "usage: KU2STD [input file] [output file]");
-}
-
-int main( int argc, char *argv[] )
-{
-
-    FILE *inFile, *outFile;
-
-    unsigned char character;
-
-    if ( argc != 3 )
-    {
-        usage( );
-        exit( 0 );
-    }
-
-    if ( ( inFile = fopen( argv[1], "r" ) ) == NULL )
-    {
-        puts( "Can't open input file." );
-        exit( 0 );
-    }
-    if ( ( outFile = fopen( argv[2], "w" ) ) == NULL )
-    {
-        puts( "Can't open output file." );
-        exit( 0 );
-    }
-
-    do {
-        character = fgetc( inFile );
-        if ( feof( inFile ) )
-        {
-            break;
-        }
-        fprintf( outFile, "%c", cwku2std( character ) );
-    } while ( 1 );
-
-    puts( "Finished!" );
-
-    fclose( inFile );
-    fclose( outFile );
-    return 0;
+    return ( ( p_stdcode >= 0x80 ) ? std_to_kurw[p_stdcode - 0x80] : p_stdcode );
 }

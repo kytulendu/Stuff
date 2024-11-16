@@ -1,6 +1,6 @@
 /*
 * ============================================================================
-* Convert Rajavithi Word PC KU to TIS-620 Thai character code.
+* Convert TIS-620 to Kaset-RW (Kaset Rajavithi Word PC) Thai character code.
 * By Khralkatorrix <https://github.com/kytulendu>.
 *
 * This is free and unencumbered software released into the public domain.
@@ -31,23 +31,54 @@
 * ============================================================================
 */
 
-/* Thai character code conversion table */
-const unsigned char rwku_to_std[] = {
-    0x0f0, 0x0f1, 0x0f2, 0x0f3, 0x0f4, 0x0f5, 0x0f6, 0x0f7, 0x0f8, 0x0f9, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020,
-    0x020, 0x020, 0x020, 0x020, 0x020, 0x098, 0x091, 0x099, 0x093, 0x08f, 0x092, 0x09a, 0x090, 0x09b, 0x095, 0x096,
-    0x0a0, 0x0a1, 0x0a2, 0x0a4, 0x0a6, 0x0a7, 0x0a8, 0x0a9, 0x0aa, 0x0ab, 0x0ac, 0x0ad, 0x0ae, 0x0af, 0x0b0, 0x0b1,
-    0x0b2, 0x0b3, 0x0b4, 0x0b5, 0x0b6, 0x0b7, 0x0b8, 0x0b9, 0x0ba, 0x0bb, 0x0bc, 0x0bd, 0x0be, 0x0bf, 0x0c0, 0x0c1,
-    0x0c2, 0x0c3, 0x0c4, 0x0c5, 0x0c7, 0x0c8, 0x0c9, 0x0ca, 0x0cb, 0x0cc, 0x0cd, 0x0ce, 0x0d0, 0x0c6, 0x0d2, 0x0d3,
-    0x0e0, 0x0e1, 0x0e2, 0x0e3, 0x0e4, 0x0e6, 0x0cf, 0x0d8, 0x0d9, 0x0d4, 0x0d5, 0x0d6, 0x0d7, 0x0d1, 0x0ed, 0x0e7,
-    0x0e8, 0x0e9, 0x0ea, 0x0eb, 0x0ec, 0x0da, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020,
-    0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x020, 0x0ff,
-};
+#include <stdio.h>
+#include <stdlib.h>
 
-/** Convert Rajavithi Word PC KU to TIS-620 Thai character code.
-*   for file use by Rajavithi Word PC.
-*  \param[in]  p_rwkucode       Rajavithi Word PC KU code character.
-*  \return unsigned char       TIS-620 code character. */
-unsigned char rwku2std( unsigned char p_rwkucode )
+#include "std2kurw.h"
+
+void usage( void )
 {
-    return ( ( p_rwkucode >= 0x80 ) ? rwku_to_std[p_rwkucode - 0x80] : p_rwkucode );
+    puts( "Convert TIS-620 to Kaset-RW (Kaset Rajavithi Word PC) Thai character code." );
+    puts( "Copyright 2014, Khralkatorrix.\n" );
+    puts( "BACKUP BEFORE CONVERT!\n" );
+    puts( "usage: STD2KURW [input file] [output file]");
+}
+
+int main( int argc, char *argv[] )
+{
+
+    FILE *inFile, *outFile;
+
+    unsigned char character;
+
+    if ( argc != 3 ) {
+        usage( );
+        exit( 0 );
+    }
+
+    if ( ( inFile = fopen( argv[1], "r" ) ) == NULL )
+    {
+        puts( "Can't open input file." );
+        exit( 0 );
+    }
+    if ( ( outFile = fopen( argv[2], "w" ) ) == NULL )
+    {
+        puts( "Can't open output file." );
+        exit( 0 );
+    }
+
+    do {
+        character = fgetc( inFile );
+        if ( feof( inFile ) )
+        {
+            break;
+        }
+        fprintf( outFile, "%c", std2kurw( character ) );
+    } while ( 1 );
+
+    puts( "Finished!" );
+
+    fclose( inFile );
+    fclose( outFile );
+    return 0;
 }

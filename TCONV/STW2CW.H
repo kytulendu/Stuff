@@ -36,7 +36,7 @@
 
 /** Convert iRC Standard Word table to CU-Writer table, TIS-620 only.
 *  \param[in]  p_stdcode        STDW table code.
-*  \return unsigned char       CW table code. */
+*  \return unsigned char        CW table code. */
 unsigned char stw2cwtab( unsigned char p_stdcode )
 {
     switch ( p_stdcode ) {
