@@ -39,9 +39,8 @@
 void usage( void )
 {
     puts( "Convert TIS-620 to Kaset-RW (Kaset Rajavithi Word PC) Thai character code." );
-    puts( "Copyright 2014, Khralkatorrix.\n" );
-    puts( "BACKUP BEFORE CONVERT!\n" );
-    puts( "usage: STD2KURW [input file] [output file]");
+    puts( "By Khralkatorrix.\n\n" );
+    puts( "Usage: STD2KURW [input file] [output file]");
 }
 
 int main( int argc, char *argv[] )

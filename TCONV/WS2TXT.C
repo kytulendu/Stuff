@@ -37,9 +37,8 @@
 void usage( void )
 {
     puts( "Convert WordStar to plain text." );
-    puts( "Copyright 2024, Khralkatorrix.\n" );
-    puts( "BACKUP BEFORE CONVERT!\n" );
-    puts( "usage: WS2TXT [input file] [output file]");
+    puts( "By Khralkatorrix.\n\n" );
+    puts( "Usage: WS2TXT [input file] [output file]");
 }
 
 int main( int argc, char *argv[] )
