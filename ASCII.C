@@ -31,33 +31,38 @@
 * ============================================================================
 */
 
-#include<stdio.h>
-#include<conio.h>
+#include <stdio.h>
+#include <conio.h>
 
-void main( ) {
-	int i, j;
-	int col = 0;
-	int count = 2;
-	char ch = 32;
+void main()
+{
+    int i, j;
+    int col = 0;
+    int count = 2;
+    char ch = 32;
 
-	printf( "   " );
-	for ( i = 0; i <= 15; i++ ) {
-		printf( "%2x", i );
-	}
-	printf( "\n" );
+    printf("   ");
+    for (i = 0; i <= 15; i++)
+    {
+        printf("%2x", i);
+    }
+    printf("\n");
 
-	printf( " %x ", count );
-	for ( j = 32; j <= 255; j++ ) {
-		printf( "%2c", ch );
-		ch++;
-		col++;
-		if ( col == 16 ) {
-			col = 0;
-			count++;
-			printf( "\n" );
-			if ( count <= 15 ) {
-				printf( " %x ", count );
-			}
-		}
-	}
+    printf(" %x ", count);
+    for (j = 32; j <= 255; j++)
+    {
+        printf("%2c", ch);
+        ch++;
+        col++;
+        if (col == 16)
+        {
+            col = 0;
+            count++;
+            printf("\n");
+            if (count <= 15)
+            {
+                printf(" %x ", count);
+            }
+        }
+    }
 }

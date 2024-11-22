@@ -36,49 +36,47 @@
 
 #include "stw2cw.h"
 
-void usage( void )
+void usage(void)
 {
-    puts( "Convert iRC Standard Word table to CU-Writer table, TIS-620 only." );
-    puts( "By Khralkatorrix.\n\n" );
-    puts( "Usage: STW2CW [input file] [output file]");
+    puts("Convert iRC Standard Word table to CU-Writer table, TIS-620 only.");
+    puts("By Khralkatorrix.\n\n");
+    puts("Usage: STW2CW [input file] [output file]");
 }
 
-int main( int argc, char *argv[] )
+int main(int argc, char *argv[])
 {
-
     FILE *inFile, *outFile;
-
     unsigned char character;
 
-    if ( argc != 3 )
+    if (argc != 3)
     {
-        usage( );
-        exit( 0 );
+        usage();
+        exit(0);
     }
 
-    if ( ( inFile = fopen( argv[1], "r" ) ) == NULL )
+    if ((inFile = fopen(argv[1], "r")) == NULL)
     {
-        puts( "Can't open input file." );
-        exit( 0 );
+        puts("Can't open input file.");
+        exit(0);
     }
-    if ( ( outFile = fopen( argv[2], "w" ) ) == NULL )
+    if ((outFile = fopen(argv[2], "w")) == NULL)
     {
-        puts( "Can't open output file." );
-        exit( 0 );
+        puts("Can't open output file.");
+        exit(0);
     }
 
     do {
-        character = fgetc( inFile );
-        if ( feof( inFile ) )
+        character = fgetc(inFile);
+        if (feof(inFile))
         {
             break;
         }
-        fprintf( outFile, "%c", stw2cw( character ) );
-    } while ( 1 );
+        fprintf(outFile, "%c", stw2cw(character));
+    } while (1);
 
-    puts( "Finished!" );
+    puts("Finished!");
 
-    fclose( inFile );
-    fclose( outFile );
+    fclose(inFile);
+    fclose(outFile);
     return 0;
 }

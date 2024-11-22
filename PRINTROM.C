@@ -37,11 +37,11 @@
 void printbincharpad(char c)
 {
     int i;
-    for(i = 7; i >= 0; --i)
+    //for (i = 0; i <= 7; i++)
+    for (i = 7; i >= 0; i--)
     {
         putchar((c & (1 << i)) ? '#' : '.');
     }
-    putchar('\n');
 }
 
 int main(int argc, char *argv[])
@@ -50,29 +50,32 @@ int main(int argc, char *argv[])
     char read;
     int count = 0;
 
-    if((argc < 2) || (argc > 2)) {
+    if ((argc < 2) || (argc > 2))
+    {
         printf("Usage: %s filename\n", argv[0]);
         return 1;
     }
 
     fptr = fopen(argv[1],"rb");
-    if(fptr == NULL)
+    if (fptr == NULL)
     {
         printf("Error reading file %s", argv[1]);
         return 1;
     }
 
+    //printf("# 0 = .; 1 = #; bit order B0-B7\n");
     printf("# 0 = .; 1 = #; bit order B7-B0\n");
 
-    while(1)
+    while (1)
     {
         read = getc(fptr);
-        if(feof(fptr))
+        if (feof(fptr))
         {
             break;
         }
         printf("%04x : ", count);
         printbincharpad(read);
+        putchar('\n');
         count++;
     }
 

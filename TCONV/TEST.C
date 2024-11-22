@@ -40,35 +40,35 @@
 #include "kurw2std.h"
 #include "std2kurw.h"
 
-int main( )
+int main()
 {
     int i;
-    for ( i = 0; i < 256; i++ )
+    for(i = 0; i < 256; i++)
     {
-        if ( kucw2std( std2kucw( i ) ) != i )
+        if(kucw2std(std2kucw(i)) != i)
         {
-            printf( "In std2kucw, wrong code = %X\n", i );
+            printf("In std2kucw, wrong code = %X\n", i);
         }
     }
-    for ( i = 0; i < 256; i++ )
+    for(i = 0; i < 256; i++)
     {
-        if ( std2kucw( kucw2std( i ) ) != i )
+        if(std2kucw(kucw2std(i)) != i)
         {
-            printf( "In kucw2std, wrong code = %X\n", i );
+            printf("In kucw2std, wrong code = %X\n", i);
         }
     }
-    for ( i = 0; i < 256; i++ )
+    for(i = 0; i < 256; i++)
     {
-        if ( kurw2std( std2kurw( i ) ) != i )
+        if(kurw2std(std2kurw(i)) != i)
         {
-            printf( "In std2kurw, wrong code = %X\n", i );
+            printf("In std2kurw, wrong code = %X\n", i);
         }
     }
-    for ( i = 0; i < 256; i++ )
+    for(i = 0; i < 256; i++)
     {
-        if ( std2kurw( kurw2std( i ) ) != i )
+        if(std2kurw(kurw2std(i)) != i)
         {
-            printf( "In kurw2std, wrong code = %X\n", i );
+            printf("In kurw2std, wrong code = %X\n", i);
         }
     }
     return 0;

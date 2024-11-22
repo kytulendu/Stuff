@@ -47,7 +47,7 @@ const unsigned char kurw_to_std[] = {
 *   for file use by Rajavithi Word PC.
 *  \param[in]  p_rwkucode       Kaset-RW code character.
 *  \return unsigned char        TIS-620 code character. */
-unsigned char kurw2std( unsigned char p_kurwcode )
+unsigned char kurw2std(unsigned char p_kurwcode)
 {
-    return ( ( p_kurwcode >= 0x80 ) ? kurw_to_std[p_kurwcode - 0x80] : p_kurwcode );
+    return ((p_kurwcode >= 0x80) ? kurw_to_std[p_kurwcode - 0x80] : p_kurwcode);
 }

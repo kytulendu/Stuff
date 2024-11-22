@@ -34,50 +34,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void usage( void )
+void usage(void)
 {
-    puts( "Convert WordStar to plain text." );
-    puts( "By Khralkatorrix.\n\n" );
-    puts( "Usage: WS2TXT [input file] [output file]");
+    puts("Convert WordStar to plain text.");
+    puts("By Khralkatorrix.\n\n");
+    puts("Usage: WS2TXT [input file] [output file]");
 }
 
-int main( int argc, char *argv[] )
+int main(int argc, char *argv[])
 {
-
     FILE *inFile, *outFile;
-
     unsigned char character;
 
-    if ( argc != 3 )
+    if (argc != 3)
     {
-        usage( );
-        exit( 0 );
+        usage();
+        exit(0);
     }
 
-    if ( ( inFile = fopen( argv[1], "r" ) ) == NULL )
+    if ((inFile = fopen(argv[1], "r")) == NULL)
     {
-        puts( "Can't open input file." );
-        exit( 0 );
+        puts("Can't open input file.");
+        exit(0);
     }
-    if ( ( outFile = fopen( argv[2], "w" ) ) == NULL )
+    if ((outFile = fopen(argv[2], "w")) == NULL)
     {
-        puts( "Can't open output file." );
-        exit( 0 );
+        puts("Can't open output file.");
+        exit(0);
     }
 
     do {
-        character = fgetc( inFile );
-        if ( feof( inFile ) )
+        character = fgetc(inFile);
+        if (feof(inFile))
         {
             break;
         }
         /* strip out the high bit */
-        fprintf( outFile, "%c", ( character >= 0x80 ) ? character - 0x80 : character );
-    } while ( 1 );
+        fprintf(outFile, "%c", (character >= 0x80) ? (character - 0x80) : character);
+    } while (1);
 
-    puts( "Finished!" );
+    puts("Finished!");
 
-    fclose( inFile );
-    fclose( outFile );
+    fclose(inFile);
+    fclose(outFile);
     return 0;
 }

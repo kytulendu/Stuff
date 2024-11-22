@@ -49,7 +49,7 @@ const unsigned char std_to_kucw[] = {
 /** Convert TIS-620 to Kaset-CW (Kaset CU-Writer) Thai character code.
 *  \param[in]  p_stdcode        TIS-620 code character.
 *  \return unsigned char        Kaset-CW code character. */
-unsigned char std2kucw( unsigned char p_stdcode )
+unsigned char std2kucw(unsigned char p_stdcode)
 {
-    return ( ( p_stdcode >= 0x80 ) ? std_to_kucw[p_stdcode - 0x80] : p_stdcode );
+    return ((p_stdcode >= 0x80) ? std_to_kucw[p_stdcode - 0x80] : p_stdcode);
 }
