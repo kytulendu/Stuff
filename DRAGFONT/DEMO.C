@@ -7,7 +7,7 @@ void main()
 {
     int graphdriver = DETECT, graphmode, ErrorCode, DragFont, centertext;
     const char* FontName = "DRAG";
-    const char* PATH_TO_BGI = "C:\\TC\\BGI\\";  /* change this to your BGI driver path */
+    const char* PATH_TO_BGI = "C:\\BC\\BGI\\";  /* change this to your BGI driver path */
 
     initgraph(&graphdriver, &graphmode, PATH_TO_BGI);
     ErrorCode = graphresult();  /* Read result of initialization */
