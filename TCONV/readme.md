@@ -1,8 +1,8 @@
-Thai Character code converter
-=============================
+# Thai Character code converter
 
-Note : Convert TIS-620 to Kaset will lose some character.
-       Some invalid character will replace with space (20h).
+Note:  Convert TIS-620 to Kaset will lose some character.
+       Invalid character will replace with space (20h).
+       Option settings at the end of file will be stripped out.
 
     KUCW2STD    Kaset-CW (Kaset CU-Writer) to TIS-620
     KURW2STD    Kaset-RW (Kaset Rajavithi Word PC) to TIS-620

@@ -38,7 +38,7 @@
 
 void usage(void)
 {
-    puts("Convert iRC Standard Word table to CU-Writer table, TIS-620 only.");
+    puts("Convert iRC Standard Word to CU-Writer, TIS-620 only.");
     puts("By Khralkatorrix.\n\n");
     puts("Usage: STW2CW [input file] [output file]");
 }
