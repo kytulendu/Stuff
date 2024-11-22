@@ -1,5 +1,7 @@
 /* Skyrim Dragon font demo by Khralkatorrix */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <graphics.h>
 #include <conio.h>
 
