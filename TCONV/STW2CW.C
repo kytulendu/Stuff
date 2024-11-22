@@ -73,7 +73,7 @@ int main( int argc, char *argv[] )
         {
             break;
         }
-        fprintf( outFile, "%c", stw2cwtab( character ) );
+        fprintf( outFile, "%c", stw2cw( character ) );
     } while ( 1 );
 
     puts( "Finished!" );
