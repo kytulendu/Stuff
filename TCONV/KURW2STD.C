@@ -71,6 +71,22 @@ int main(int argc, char *argv[])
         {
             break;
         }
+
+        /* Convert Rajavithi Word PC control code to CU-Writer */
+        if (character == 0x15)              /* italic */
+            character = 0x17;
+        else if ((character == 0x01) ||     /* 12 characters/inch */
+            (character == 0x03) ||          /* condensed */
+            (character == 0x04) ||          /* double strike */
+            (character == 0x0E) ||          /* 10 characters/inch */
+            (character == 0x11) ||          /* DBF record +1 */
+            (character == 0x12) ||          /* DBF record -1 */
+            (character == 0x17) ||          /* 15 characters/inch */
+            (character == 0x18) ||          /* Printing in draft mode */
+            (character == 0x19) ||          /* Printing in NLQ mode */
+            ((character >= 0x1c) && (character <= 0x1f))) /* multi font control code */
+            continue;
+
         fprintf(outFile, "%c", kurw2std(character));
     } while (1);
 

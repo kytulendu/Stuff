@@ -71,6 +71,15 @@ int main(int argc, char *argv[])
         {
             break;
         }
+
+        /* Convert CU-Writer control code to Rajavithi Word PC */
+        if (character == 0x12)              /* double-underline */
+            character = 0x13;
+        else if (character == 0x17)         /* italic */
+            character = 0x15;
+        else if ((character >= 0x1b) && (character <= 0x1e)) /* multi font control code */
+            continue;
+
         fprintf(outFile, "%c", std2kurw(character));
     } while (1);
 
