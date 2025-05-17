@@ -1,4 +1,5 @@
 wcl cuw2cw.c
+wcl dtm2std.c
 wcl ku2std.c
 wcl kucw2std.c
 wcl kurw2std.c
