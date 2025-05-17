@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
         {
             break;
         }
-        fprintf(outFile, "%c", cuw2std(character));
+        fprintf(outFile, "%c", cuw2cw(character));
     } while (1);
 
     puts("Finished!");

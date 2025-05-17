@@ -48,7 +48,7 @@ const unsigned char cuw_to_cw[] = {
 /** Convert Computer Union Word to CU-Writer.
 *  \param[in]  p_cuwcode        Computer Union character code.
 *  \return unsigned char        CU-Writer character code. */
-unsigned char cuw2std(unsigned char p_cuwcode)
+unsigned char cuw2cw(unsigned char p_cuwcode)
 {
     return ((p_cuwcode >= 0x80) ? cuw_to_cw[p_cuwcode - 0x80] : p_cuwcode);
 }
