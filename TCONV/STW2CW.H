@@ -31,9 +31,6 @@
 * ============================================================================
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-
 /** Convert iRC Standard Word table to CU-Writer table, TIS-620 only.
 *  \param[in]  p_stwcode        STDW table code.
 *  \return unsigned char        CW table code. */

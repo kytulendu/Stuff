@@ -31,9 +31,6 @@
 * ============================================================================
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-
 #define UNDEF 0x020
 
 /* Thai character code conversion table */
