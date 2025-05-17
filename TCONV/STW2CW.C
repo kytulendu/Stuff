@@ -71,6 +71,13 @@ int main(int argc, char *argv[])
         {
             break;
         }
+
+        /* Convert iRC Standard Word control code to CU-Writer */
+        if (character == 0x04)              /* enlarge */
+            character = 0x05;
+        else if (character == 0x0c)         /* italic */
+            character = 0x17;
+
         fprintf(outFile, "%c", stw2cw(character));
     } while (1);
 
