@@ -10,6 +10,7 @@ echo DTM2STD     Datamat to TIS-620
 echo KU2STD      Kaset to TIS-620
 echo KUCW2STD    Kaset-CW (Kaset CU-Writer) to TIS-620-CW
 echo KURW2STD    Kaset-RW (Kaset Rajavithi Word PC) to TIS-620-CW
+echo LY2STD      Loxley to TIS-620
 echo STD2KUCW    TIS-620-CW to Kaset-CW
 echo STD2KURW    TIS-620-CW to Kaset-RW
 echo STW2CW      iRC Standard Word to CU-Writer, TIS-620 only
