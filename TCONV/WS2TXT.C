@@ -52,12 +52,12 @@ int main(int argc, char *argv[])
         exit(0);
     }
 
-    if ((inFile = fopen(argv[1], "r")) == NULL)
+    if ((inFile = fopen(argv[1], "rb")) == NULL)
     {
         puts("Can't open input file.");
         exit(0);
     }
-    if ((outFile = fopen(argv[2], "w")) == NULL)
+    if ((outFile = fopen(argv[2], "wb")) == NULL)
     {
         puts("Can't open output file.");
         exit(0);
@@ -69,8 +69,15 @@ int main(int argc, char *argv[])
         {
             break;
         }
+
+        /* preserve soft carriage return (0x8D) */
+        if ((character >= 0x80) && (character != 0x8D))
+        {
+            character = character - 0x80;
+        }
+
         /* strip out the high bit */
-        fprintf(outFile, "%c", (character >= 0x80) ? (character - 0x80) : character);
+        fprintf(outFile, "%c", character);
     } while (1);
 
     puts("Finished!");
