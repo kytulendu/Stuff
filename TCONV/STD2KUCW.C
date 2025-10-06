@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 
     do {
         character = fgetc(inFile);
-        if (feof(inFile))
+        if (feof(inFile) || (character == 0x1a))
         {
             break;
         }
