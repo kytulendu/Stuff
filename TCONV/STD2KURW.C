@@ -54,12 +54,12 @@ int main(int argc, char *argv[])
         exit(0);
     }
 
-    if ((inFile = fopen(argv[1], "r")) == NULL)
+    if ((inFile = fopen(argv[1], "rb")) == NULL)
     {
         puts("Can't open input file.");
         exit(0);
     }
-    if ((outFile = fopen(argv[2], "w")) == NULL)
+    if ((outFile = fopen(argv[2], "wb")) == NULL)
     {
         puts("Can't open output file.");
         exit(0);
