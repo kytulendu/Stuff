@@ -70,8 +70,8 @@ int main(int argc, char *argv[])
             break;
         }
 
-        /* preserve soft carriage return (0x8D) */
-        if ((character >= 0x80) && (character != 0x8D))
+        /* preserve soft carriage return (0x8d) */
+        if ((character >= 0x80) && (character != 0x8d))
         {
             character = character - 0x80;
         }
